@@ -28,3 +28,4 @@ ADR は「なぜそう決めたか」「何を却下したか」を書く。
 | [0010](0010-mcts-playouts-and-cast.md) | MCTS（UCT）はプレイアウト数で打ち切り、Core は同じ `apply` の経路のまま速くし、キャスト 4 名は探索の設定で性格を分ける | 受理 |
 | [0011](0011-cyber-hud-themes-and-banter.md) | サイバー HUD（兄弟の B 案・2 段の配置）・12 テーマ・キャストの顔とセリフ | 受理 |
 | [0012](0012-release-pipeline.md) | 版の入力は Version.swift の 1 か所、配布物は静的リンクの 1 経路で作り、検査してから梱包する | 受理 |
+| [0013](0013-powershell-installer.md) | PowerShell からは install.ps1 で WSL の中に入れ、Windows 側には wsl.exe で起動する nene-igo.cmd だけを置く | 受理 |
