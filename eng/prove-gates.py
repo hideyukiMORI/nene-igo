@@ -421,13 +421,13 @@ PROOFS: list[Proof] = [
 MANUAL: list[dict] = [
     {"id": "P43", "rules": ["GIT-004"],
      "violation": "ruleset が `main` に効いていることを読み戻し、必須 check の失敗した PR がマージできないことを見る"
-                  "（`main` への直接 push と force push の試行は、作業環境の権限で止められたので行っていない）",
+                  "（`main` への直接 push と force push の試行は、公開リポジトリの `main` を壊しうるので行っていない）",
      "command": "`gh api repos/hideyukiMORI/nene-igo/rules/branches/main`・`gh pr view 2`（2026-10-26）",
-     "evidence": "`main` に効く規則は ruleset 25825059 の `deletion`・`non_fast_forward`・`pull_request`（squash のみ）・`required_status_checks`（`check`）の 4 つ。"
-                 "PR #2 の head 14cd69b は必須 check `check` が FAILURE で `mergeStateStatus` が `BLOCKED`"},
+     "evidence": "`main` に効く規則は ruleset 25844451 の `deletion`・`non_fast_forward`・`pull_request`（squash のみ）・`required_status_checks`（`check`）の 4 つ。"
+                 "PR #2 の head fe8bf67 は必須 check `check` が FAILURE で `mergeStateStatus` が `BLOCKED`"},
     {"id": "P46", "rules": ["QLT-012"],
      "violation": "draft の PR に push する（CI のジョブはスキップでなく失敗し、PR はマージできない）",
-     "command": "GitHub Actions run 40205748916（PR #2・head 14cd69b・2026-10-25T15:11Z）",
+     "command": "GitHub Actions run 40250600895（PR #2・head fe8bf67・2026-10-26T00:41Z）",
      "evidence": "step `eng/ci-require-ready.sh true` が `ci: PR が draft なのでフルゲートを回さない。Ready にすると回る（QLT-012）` で exit 1。"
                  "必須 check `check` は FAILURE・`mergeStateStatus` は `BLOCKED`"},
 ]
