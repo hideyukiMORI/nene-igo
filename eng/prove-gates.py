@@ -374,6 +374,9 @@ PROOFS: list[Proof] = [
                           f'    targets: [\n        .testTarget(name: "NeNeIgoEngineTests", dependencies: ["NeNeIgoCore", "NeNeIgoEngine"], {SETTINGS}),'),
                      (r / "Tests/NeNeIgoEngineTests").mkdir(parents=True)),
           r"swift-strict: SwiftPM かコンパイラが警告を出した"),
+    Proof("P48", ["QLT-001"], "Tromp の合法局面数の期待値を 1 つ変える（make check の中で swift test が実際に回って落ちること）",
+          lambda r: edit(r, "Tests/NeNeIgoCoreTests/TrompCount.swift", "legalPositions: 12675)", "legalPositions: 12676)"),
+          r"✘ Test everyArrangementIsCountedLikeTromp"),
     Proof("P50", ["SWF-002"], "文字列の switch の全捕捉を case _ where true: と書く（CNF-013 の字句の外の書き方。コンパイラが網羅に数えないこと）",
           core_file("Probe.swift", "/// 証明用。\nenum Probe {\n    /// 証明用。\n    static func code(_ s: String) -> Int {\n"
                     "        switch s {\n        case \"a\":\n            return 1\n        case _ where true:\n            return 0\n        }\n    }\n}\n"),
