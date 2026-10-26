@@ -145,6 +145,6 @@ Waivers: none | WVR-NNNN
 
 現在のタスクは [docs/todo/current.md](docs/todo/current.md)。GitHub Issue が正で、そこは要約。
 
-- 動くもの: `make check`（target は 0 本・製品コードは無い）
-- 動かないもの: 製品そのもの。Phase 3 の最初は「盤とルール（Core だけ・画面なし）」で、合法局面数が公表値と一致するまで画面と探索に入らない
+- 動くもの: `make check`。Core（盤・取り・自殺手・局面スーパーコウ・パスと終局・中国ルールの数え方・文字列表現）。小さい盤の合法局面数が Tromp の公表値と 19 通りで一致（ADR 0005・0006）
+- 動かないもの: 画面・探索・端末（Phase 3-2 以降）
 - 施主の決定は [docs/REQUIREMENTS.md](docs/REQUIREMENTS.md) にそろっている。決定を覆したくなった点や、要件に無い機能を足したくなった点は、自分で決めずに施主に聞く
