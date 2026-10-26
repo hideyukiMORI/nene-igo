@@ -33,6 +33,16 @@ curl -fsSL https://raw.githubusercontent.com/hideyukiMORI/nene-igo/main/install.
 - Swift は要りません。Swift の標準ライブラリを静的にリンクした 1 ファイルで、動的な依存は libc・libm・libstdc++・libgcc_s だけです
 - アンインストール: `rm ~/.local/bin/nene-igo`
 
+**PowerShell から**（Windows・WSL が入っていること）:
+
+```powershell
+irm https://raw.githubusercontent.com/hideyukiMORI/nene-igo/main/install.ps1 | iex
+```
+
+既定の WSL のディストリビューションの中で同じインストーラを流し、`%LOCALAPPDATA%\nene-igo\bin` に小さな `nene-igo.cmd` を置いて、そのフォルダをユーザーの PATH に足します。
+これで PowerShell からも cmd からも `nene-igo` で起動できます（中身は `wsl.exe` で WSL の nene-igo を呼ぶだけです）。別のディストリビューションに入れるときは `NENE_IGO_DISTRO` を設定してください。
+スクリプトは [install.ps1](install.ps1) です。アンインストール: `%LOCALAPPDATA%\nene-igo` を消して PATH から外し、`wsl rm ~/.local/bin/nene-igo`
+
 <details>
 <summary>手で入れる場合</summary>
 

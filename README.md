@@ -34,6 +34,16 @@ The whole script is [install.sh](install.sh), about 45 lines.
 - No Swift needed. It is a single file with the Swift standard library linked statically; the only dynamic dependencies are libc, libm, libstdc++ and libgcc_s
 - To uninstall: `rm ~/.local/bin/nene-igo`
 
+**From PowerShell** (Windows, with WSL):
+
+```powershell
+irm https://raw.githubusercontent.com/hideyukiMORI/nene-igo/main/install.ps1 | iex
+```
+
+It runs the same installer inside your default WSL distribution, then puts a small `nene-igo.cmd` in `%LOCALAPPDATA%\nene-igo\bin` and adds that folder to your user PATH,
+so `nene-igo` works from PowerShell and cmd too (it starts the WSL one through `wsl.exe`). Set `NENE_IGO_DISTRO` to use another distribution.
+The whole script is [install.ps1](install.ps1). To uninstall: delete `%LOCALAPPDATA%\nene-igo`, remove it from your PATH, and run `wsl rm ~/.local/bin/nene-igo`
+
 <details>
 <summary>Install by hand</summary>
 
