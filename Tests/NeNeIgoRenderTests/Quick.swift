@@ -7,7 +7,7 @@ enum Quick {
         else {
             preconditionFailure("範囲外")
         }
-        return Persona.make(name: name, profile: profile)
+        return Persona.make(name: name, profile: profile, voice: Persona.cast[0])
     }
 
     static let roster = [

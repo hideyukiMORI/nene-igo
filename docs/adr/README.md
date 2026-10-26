@@ -22,7 +22,8 @@ ADR は「なぜそう決めたか」「何を却下したか」を書く。
 | [0004](0004-target-split-and-dependency-graph.md) | target は Core・Engine・Render・Terminal・合成ルートの 5 つに分け、兄弟と同じ向きで依存させる | 受理（Terminal の標準モジュールは 0008 で置換） |
 | [0005](0005-board-representation-and-rules.md) | 盤は番兵つきの 1 次元配列、手は「点に打つ／パス」の閉じた enum、局面スーパーコウは盤の配置の Zobrist ハッシュで見る | 受理 |
 | [0006](0006-legal-position-counts-and-rule-tests.md) | ルールの正しさは Tromp の合法局面数と、着手でたどり着ける配置の数と、手作りの局面で確かめる | 受理 |
-| [0007](0007-board-drawing-and-random-player.md) | 交点は 3 桁 × 1 行（`+` と `-` の ASCII の線・`*` の星・2 桁の石）、乱数の打ち手は自分の眼を埋めない | 受理（石の塗り方は 0009 で補う） |
+| [0007](0007-board-drawing-and-random-player.md) | 交点は 3 桁 × 1 行（`+` と `-` の ASCII の線・`*` の星・2 桁の石）、乱数の打ち手は自分の眼を埋めない | 受理（石の塗り方は 0009 で補い、配置・HUD・テーマは 0011 で置換） |
 | [0008](0008-terminal-loop-and-signals.md) | 端末と 1 本のループは NeNe Reversi から移植し、Terminal の標準モジュールに Synchronization を足す | 受理 |
 | [0009](0009-stones-underlined-in-board-color.md) | 石のセルに碁盤の地の色の下線を引き、縦に並んだ石を 1 つずつ離して見せる | 受理 |
 | [0010](0010-mcts-playouts-and-cast.md) | MCTS（UCT）はプレイアウト数で打ち切り、Core は同じ `apply` の経路のまま速くし、キャスト 4 名は探索の設定で性格を分ける | 受理 |
+| [0011](0011-cyber-hud-themes-and-banter.md) | サイバー HUD（兄弟の B 案・2 段の配置）・12 テーマ・キャストの顔とセリフ | 受理 |
