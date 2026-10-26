@@ -5,8 +5,9 @@ Written in Swift for Ubuntu on WSL2 and Windows Terminal. The AI (rules, Monte C
 with no external engine. It is a sibling of [NeNe Gambit](https://github.com/hideyukiMORI/nene-gambit) (chess) and
 [NeNe Reversi](https://github.com/hideyukiMORI/nene-reversi).
 
-🚧 **Nothing to watch yet.** The rules are in (captures, suicide, positional superko, passes, area scoring), with no screen.
-The counts of legal positions on 19 small boards match the ones published by John Tromp. Drawing comes next.
+🚧 **Early.** `nene-igo` draws two random players (they never fill their own eyes) on a 19x19 board, game after game,
+and restores the terminal however it ends. The rules (captures, suicide, positional superko, passes, area scoring) match the counts of
+legal positions on 19 small boards published by John Tromp. Monte Carlo tree search, the cast and the themes come next.
 
 ## Development
 

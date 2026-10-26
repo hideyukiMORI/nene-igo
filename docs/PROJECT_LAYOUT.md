@@ -11,7 +11,7 @@
 ## 1. 承認されたモジュール
 
 空の「将来用 target」を作らない。下の一覧は「承認された形」で、`Package.swift` にあるのは責務が生じた target だけである（ADR 0004）。
-2026-10-26 時点で入っているのは `NeNeIgoCore` と `NeNeIgoCoreTests`（Issue #3）。
+2026-10-26 時点で 5 つの target とそれぞれのテスト target がすべて入っている（Core は Issue #3、ほかは Issue #5）。
 各 target は最初の具体的な責務が生じた PR で足す（Phase 3 の手順 1 で `NeNeIgoCore` とそのテストが最初に入る）。
 
 ```text
@@ -43,7 +43,7 @@ NeNeIgoCore
 NeNeIgoCore      -> （無し）
 NeNeIgoEngine    -> NeNeIgoCore
 NeNeIgoRender    -> NeNeIgoCore, NeNeIgoEngine
-NeNeIgoTerminal  -> NeNeIgoRender                         ＋ 標準モジュール Glibc
+NeNeIgoTerminal  -> NeNeIgoRender                         ＋ 標準モジュール Glibc・Synchronization（ADR 0008）
 nene-igo         -> 上の 4 つすべて（明示的な合成のためだけに） ＋ 標準モジュール Glibc
 ```
 

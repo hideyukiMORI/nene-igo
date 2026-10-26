@@ -95,9 +95,9 @@ Core・Engine・Render は、端末・ファイル・ネットワーク・現在
 | --- | --- | --- | --- |
 | 局面 | 盤上の石・手番・盤の配置の Zobrist ハッシュ | `Position` | `Position.play`（パスを含む）だけ（ADR 0005） |
 | 1 局の経過 | 打った手（パスを含む）・アゲハマ・連続したパスの数・この局で現れた盤の配置・コミ | `Game` | `Game.play` だけ。「合法か」は `Game.play`、「終局したか」は `Game.status`、「何目差か」は `AreaScore.counting` と `GameResult` |
-| 対局の列 | 何局目か・通算の勝敗・いまの局の棋譜・黒白のキャスト | 合成ルート | 合成ルートが 1 局ごとに Core と Engine を呼ぶ |
-| 乱数の状態 | シード付き PRNG の内部状態 | 合成ルート | 合成ルートが Engine に `inout` で渡す |
-| 画面の前フレーム | 差分描画の比較元のセル格子 | 合成ルートか Terminal（Phase 3 の ADR で 1 つに決める） | 描画の経路だけ |
+| 対局の列 | 何局目か・通算の勝敗・いまの局（黒白のキャストは手順 4） | Engine の値 `GameSeries`。合成ルートの `Screensaver` が 1 つだけ持つ | `GameSeries.advanced` だけ（ADR 0008） |
+| 乱数の状態 | シード付き PRNG（`SplitMix64`）の内部状態 | 合成ルートの `Screensaver` | 合成ルートが Engine に `inout` で渡す |
+| 画面の前フレーム | 差分描画の比較元のセル格子 | 合成ルートの `Screensaver.previous`（ADR 0008） | 描画の経路だけ |
 | 端末の元の設定 | termios の退避値 | Terminal | Terminal の開始と復元の経路だけ |
 
 同じ事実を 2 つの区分に独立して持たない。派生値は再計算するか、無効化を明示したキャッシュにする。
