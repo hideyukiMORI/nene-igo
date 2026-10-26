@@ -1,6 +1,6 @@
 {
   "measured_on": "2026-10-26",
-  "head": "a0411a5",
+  "head": "cfc20ae",
   "note": "verdict=pass は「意図した規則で落ちた」（対照は exit 0）。作業木の未コミットの変更も複製に含む。",
   "results": [
     {
@@ -21,7 +21,7 @@
         "commits: 1 件・違反 0 件",
         "make check: 緑",
         "----------------------------------------------------------------------",
-        "Ran 101 tests in 0.259s",
+        "Ran 101 tests in 0.268s",
         "",
         "OK"
       ]
@@ -42,12 +42,12 @@
       ],
       "missing": [],
       "tail": [
-        "1 | import NeNeIgoEngine",
         "  |        `- error: no such module 'NeNeIgoEngine'",
         "2 | ",
         "3 | /// 証明用。",
         "Failed frontend command:",
-        "/root/.local/share/swiftly/toolchains/6.4.1/usr/bin/swift-frontend -frontend -emit-module -experimental-skip-non-inlinable-function-bodies-without-types Sources/NeNeIgoCore/AreaScore.swift Sources/NeNeIgoCore/BoardCell.swift Sources/NeNeIgoCore/BoardSize.swift Sources/NeNeIgoCore/Captures.swift Sources/NeNeIgoCore/EmptyRegion.swift Sources/NeNeIgoCore/Game.swift Sources/NeNeIgoCore/GameResult.swift Sources/NeNeIgoCore/GameStatus.swift Sources/NeNeIgoCore/Komi.swift Sources/NeNeIgoCore/Move.swift Sources/NeNeIgoCore/MoveOutcome.swift Sources/NeNeIgoCore/MoveRejection.swift Sources/NeNeIgoCore/PlacementRejection.swift Sources/NeNeIgoCore/PlayOutcome.swift Sources/NeNeIgoCore/Point.swift Sources/NeNeIgoCore/PointState.swift Sources/NeNeIgoCore/Position+Chains.swift Sources/NeNeIgoCore/Position.swift Sources/NeNeIgoCore/PositionCodec.swift Sources/NeNeIgoCore/PositionDecodeOutcome.swift Sources/NeNeIgoCore/PositionDecodeRejection.swift Sources/NeNeIgoCore/PositionOutcome.swift Sources/NeNeIgoCore/PositionRejection.swift Sources/NeNeIgoCore/Probe.swift Sources/NeNeIgoCore/Stone.swift Sources/NeNeIgoCore/Zobrist.swift -target x86_64-unknown-linux-gnu -disable-objc-interop -I .build/out/Products/Debug-linux-x86_64 -module-cache-path .build/out/ModuleCache.noindex -no-color-diagnostics -Xcc -fno-color-diagnostics -enable-testing -g -debug-info-format\\=dwarf -dwarf-version\\=4 -warnings-as-errors -warnings-as-errors -swift-version 6 -Onone -D SWIFT_PACKAGE -D DEBUG -D SWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE -D Xcode -serialize-debugging-options -enable-upcoming-feature ExistentialAny -enable-experimental-feature DebugDescriptionMacro -empty-abi-descriptor -external-plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/plugins/testing\\#/root/.local/share/swiftly/toolchains/6.4.1/usr/bin/swift-plugin-server -validate-clang-modules-once -clang-build-session-file .build/out/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc /tmp/igo-proof-P01-0zk7pddo -enable-anonymous-context-mangled-names -file-compilation-dir /tmp/igo-proof-P01-0zk7pddo -Xcc -fno-omit-frame-pointer -Xcc -D_LIBCPP_HARDENING_MODE\\=_LIBCPP_HARDENING_MODE_DEBUG -Xcc -fmodules-prune-interval\\=86400 -Xcc -fmodules-prune-after\\=345600 -Xcc -I.build/out/Products/Debug-linux-x86_64/include -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources-normal/x86_64 -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources/x86_64 -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\\=1 -no-auto-bridging-header-chaining -module-name NeNeIgoCore -package-name repo -const-gather-protocols-file .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/NeNeIgoCore_const_extract_protocols.json -in-process-plugin-server-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/libSwiftInProcPluginServer.so -plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/plugins -plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/local/lib/swift/host/plugins -emit-module-doc-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Modules/NeNeIgoCore.swiftdoc -emit-module-source-info-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Modules/NeNeIgoCore.swiftsourceinfo -emit-objc-header-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/NeNeIgoCore-Swift.h -serialize-diagnostics-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/NeNeIgoCore-primary-emit-module.dia -emit-dependencies-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/NeNeIgoCore-primary-emit-module.d -parse-as-library -o .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Modules/NeNeIgoCore.swiftmodule",
+        "/root/.local/share/swiftly/toolchains/6.4.1/usr/bin/swift-frontend -frontend -emit-module -experimental-skip-non-inlinable-function-bodies-without-types Sources/NeNeIgoCore/AreaScore.swift Sources/NeNeIgoCore/BoardCell.swift Sources/NeNeIgoCore/BoardSize.swift Sources/NeNeIgoCore/EmptyRegion.swift Sources/NeNeIgoCore/Game.swift Sources/NeNeIgoCore/GameResult.swift Sources/NeNeIgoCore/GameStatus.swift Sources/NeNeIgoCore/Komi.swift Sources/NeNeIgoCore/Move.swift Sources/NeNeIgoCore/MoveApplication.swift Sources/NeNeIgoCore/MoveOutcome.swift Sources/NeNeIgoCore/MoveRejection.swift Sources/NeNeIgoCore/Placement.swift Sources/NeNeIgoCore/PlacementRejection.swift Sources/NeNeIgoCore/PlayOutcome.swift Sources/NeNeIgoCore/Point.swift Sources/NeNeIgoCore/PointState.swift Sources/NeNeIgoCore/Position+Chains.swift Sources/NeNeIgoCore/Position.swift Sources/NeNeIgoCore/PositionCodec.swift Sources/NeNeIgoCore/PositionDecodeOutcome.swift Sources/NeNeIgoCore/PositionDecodeRejection.swift Sources/NeNeIgoCore/PositionOutcome.swift Sources/NeNeIgoCore/PositionRejection.swift Sources/NeNeIgoCore/Probe.swift Sources/NeNeIgoCore/Stone.swift Sources/NeNeIgoCore/Zobrist.swift -target x86_64-unknown-linux-gnu -disable-objc-interop -I .build/out/Products/Debug-linux-x86_64 -module-cache-path .build/out/ModuleCache.noindex -no-color-diagnostics -Xcc -fno-color-diagnostics -enable-testing -g -debug-info-format\\=dwarf -dwarf-version\\=4 -warnings-as-errors -warnings-as-errors -swift-version 6 -Onone -D SWIFT_PACKAGE -D DEBUG -D SWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE -D Xcode -serialize-debugging-options -enable-upcoming-feature ExistentialAny -enable-experimental-feature DebugDescriptionMacro -empty-abi-descriptor -external-plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/plugins/testing\\#/root/.local/share/swiftly/toolchains/6.4.1/usr/bin/swift-plugin-server -validate-clang-modules-once -clang-build-session-file .build/out/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc /tmp/igo-proof-P01-b1einxu1 -enable-anonymous-context-mangled-names -file-compilation-dir /tmp/igo-proof-P01-b1einxu1 -Xcc -fno-omit-frame-pointer -Xcc -D_LIBCPP_HARDENING_MODE\\=_LIBCPP_HARDENING_MODE_DEBUG -Xcc -fmodules-prune-interval\\=86400 -Xcc -fmodules-prune-after\\=345600 -Xcc -I.build/out/Products/Debug-linux-x86_64/include -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources-normal/x86_64 -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources/x86_64 -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\\=1 -no-auto-bridging-header-chaining -module-name NeNeIgoCore -package-name repo -const-gather-protocols-file .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/NeNeIgoCore_const_extract_protocols.json -in-process-plugin-server-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/libSwiftInProcPluginServer.so -plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/plugins -plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/local/lib/swift/host/plugins -emit-module-doc-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Modules/NeNeIgoCore.swiftdoc -emit-module-source-info-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Modules/NeNeIgoCore.swiftsourceinfo -emit-objc-header-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/NeNeIgoCore-Swift.h -serialize-diagnostics-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/NeNeIgoCore-primary-emit-module.dia -emit-dependencies-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/NeNeIgoCore-primary-emit-module.d -parse-as-library -o .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Modules/NeNeIgoCore.swiftmodule",
+        "[61 / 93] NeNeIgoCore",
         "error: Build failed",
         "make: *** [Makefile:19: build] Error 1"
       ]
@@ -69,8 +69,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.39 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (5.54 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -97,8 +97,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (6.38 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.50 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -116,19 +116,19 @@
       "violation": "Engine が using: の無い shuffled を呼ぶ",
       "command": "make check",
       "exit": 2,
-      "expected": "^CNF-012 Sources/NeNeIgoEngine/RandomPlayer\\.swift",
+      "expected": "^CNF-012 Sources/NeNeIgoEngine/MonteCarloSearch\\.swift",
       "verdict": "pass",
       "evidence": [
-        "CNF-012 Sources/NeNeIgoEngine/RandomPlayer.swift:14: shuffled(...) は using: で乱数源を受け取る"
+        "CNF-012 Sources/NeNeIgoEngine/MonteCarloSearch.swift:70: shuffled(...) は using: で乱数源を受け取る"
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.47 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (5.50 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
-        "CNF-012 Sources/NeNeIgoEngine/RandomPlayer.swift:14: shuffled(...) は using: で乱数源を受け取る",
+        "CNF-012 Sources/NeNeIgoEngine/MonteCarloSearch.swift:70: shuffled(...) は using: で乱数源を受け取る",
         "conformance: 22 規則・違反 1 件",
         "make: *** [Makefile:37: conformance] Error 1"
       ]
@@ -149,8 +149,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.46 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (5.65 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -180,7 +180,7 @@
         "11 |     case .white:",
         "12 |         return 1",
         "Failed frontend command:",
-        "/root/.local/share/swiftly/toolchains/6.4.1/usr/bin/swift-frontend -frontend -c Sources/NeNeIgoCore/AreaScore.swift Sources/NeNeIgoCore/BoardCell.swift Sources/NeNeIgoCore/BoardSize.swift Sources/NeNeIgoCore/Captures.swift Sources/NeNeIgoCore/EmptyRegion.swift Sources/NeNeIgoCore/Game.swift Sources/NeNeIgoCore/GameResult.swift Sources/NeNeIgoCore/GameStatus.swift Sources/NeNeIgoCore/Komi.swift Sources/NeNeIgoCore/Move.swift Sources/NeNeIgoCore/MoveOutcome.swift Sources/NeNeIgoCore/MoveRejection.swift Sources/NeNeIgoCore/PlacementRejection.swift Sources/NeNeIgoCore/PlayOutcome.swift Sources/NeNeIgoCore/Point.swift Sources/NeNeIgoCore/PointState.swift Sources/NeNeIgoCore/Position+Chains.swift Sources/NeNeIgoCore/Position.swift Sources/NeNeIgoCore/PositionCodec.swift Sources/NeNeIgoCore/PositionDecodeOutcome.swift Sources/NeNeIgoCore/PositionDecodeRejection.swift Sources/NeNeIgoCore/PositionOutcome.swift Sources/NeNeIgoCore/PositionRejection.swift -primary-file Sources/NeNeIgoCore/Side.swift Sources/NeNeIgoCore/Stone.swift Sources/NeNeIgoCore/Zobrist.swift -emit-dependencies-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Side.d -emit-const-values-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Side.swiftconstvalues -emit-reference-dependencies-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Side.swiftdeps -serialize-diagnostics-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Side.dia -target x86_64-unknown-linux-gnu -disable-objc-interop -I .build/out/Products/Debug-linux-x86_64 -module-cache-path .build/out/ModuleCache.noindex -no-color-diagnostics -Xcc -fno-color-diagnostics -enable-testing -g -debug-info-format\\=dwarf -dwarf-version\\=4 -warnings-as-errors -warnings-as-errors -swift-version 6 -Onone -D SWIFT_PACKAGE -D DEBUG -D SWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE -D Xcode -serialize-debugging-options -enable-upcoming-feature ExistentialAny -enable-experimental-feature DebugDescriptionMacro -empty-abi-descriptor -external-plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/plugins/testing\\#/root/.local/share/swiftly/toolchains/6.4.1/usr/bin/swift-plugin-server -validate-clang-modules-once -clang-build-session-file .build/out/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc /tmp/igo-proof-P06-8i997d98 -enable-anonymous-context-mangled-names -file-compilation-dir /tmp/igo-proof-P06-8i997d98 -Xcc -fno-omit-frame-pointer -Xcc -D_LIBCPP_HARDENING_MODE\\=_LIBCPP_HARDENING_MODE_DEBUG -Xcc -fmodules-prune-interval\\=86400 -Xcc -fmodules-prune-after\\=345600 -Xcc -I.build/out/Products/Debug-linux-x86_64/include -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources-normal/x86_64 -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources/x86_64 -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\\=1 -no-auto-bridging-header-chaining -module-name NeNeIgoCore -package-name repo -const-gather-protocols-file .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/NeNeIgoCore_const_extract_protocols.json -in-process-plugin-server-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/libSwiftInProcPluginServer.so -plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/plugins -plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/local/lib/swift/host/plugins -parse-as-library -o .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Side.o -index-unit-output-path /NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Side.o -index-store-path .build/out -index-system-modules",
+        "/root/.local/share/swiftly/toolchains/6.4.1/usr/bin/swift-frontend -frontend -c Sources/NeNeIgoCore/AreaScore.swift Sources/NeNeIgoCore/BoardCell.swift Sources/NeNeIgoCore/BoardSize.swift Sources/NeNeIgoCore/EmptyRegion.swift Sources/NeNeIgoCore/Game.swift Sources/NeNeIgoCore/GameResult.swift Sources/NeNeIgoCore/GameStatus.swift Sources/NeNeIgoCore/Komi.swift Sources/NeNeIgoCore/Move.swift Sources/NeNeIgoCore/MoveApplication.swift Sources/NeNeIgoCore/MoveOutcome.swift Sources/NeNeIgoCore/MoveRejection.swift Sources/NeNeIgoCore/Placement.swift Sources/NeNeIgoCore/PlacementRejection.swift Sources/NeNeIgoCore/PlayOutcome.swift Sources/NeNeIgoCore/Point.swift Sources/NeNeIgoCore/PointState.swift Sources/NeNeIgoCore/Position+Chains.swift Sources/NeNeIgoCore/Position.swift Sources/NeNeIgoCore/PositionCodec.swift Sources/NeNeIgoCore/PositionDecodeOutcome.swift Sources/NeNeIgoCore/PositionDecodeRejection.swift Sources/NeNeIgoCore/PositionOutcome.swift Sources/NeNeIgoCore/PositionRejection.swift -primary-file Sources/NeNeIgoCore/Side.swift Sources/NeNeIgoCore/Stone.swift Sources/NeNeIgoCore/Zobrist.swift -emit-dependencies-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Side.d -emit-const-values-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Side.swiftconstvalues -emit-reference-dependencies-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Side.swiftdeps -serialize-diagnostics-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Side.dia -target x86_64-unknown-linux-gnu -disable-objc-interop -I .build/out/Products/Debug-linux-x86_64 -module-cache-path .build/out/ModuleCache.noindex -no-color-diagnostics -Xcc -fno-color-diagnostics -enable-testing -g -debug-info-format\\=dwarf -dwarf-version\\=4 -warnings-as-errors -warnings-as-errors -swift-version 6 -Onone -D SWIFT_PACKAGE -D DEBUG -D SWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE -D Xcode -serialize-debugging-options -enable-upcoming-feature ExistentialAny -enable-experimental-feature DebugDescriptionMacro -empty-abi-descriptor -external-plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/plugins/testing\\#/root/.local/share/swiftly/toolchains/6.4.1/usr/bin/swift-plugin-server -validate-clang-modules-once -clang-build-session-file .build/out/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc /tmp/igo-proof-P06-vtbawit_ -enable-anonymous-context-mangled-names -file-compilation-dir /tmp/igo-proof-P06-vtbawit_ -Xcc -fno-omit-frame-pointer -Xcc -D_LIBCPP_HARDENING_MODE\\=_LIBCPP_HARDENING_MODE_DEBUG -Xcc -fmodules-prune-interval\\=86400 -Xcc -fmodules-prune-after\\=345600 -Xcc -I.build/out/Products/Debug-linux-x86_64/include -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources-normal/x86_64 -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources/x86_64 -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\\=1 -no-auto-bridging-header-chaining -module-name NeNeIgoCore -package-name repo -const-gather-protocols-file .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/NeNeIgoCore_const_extract_protocols.json -in-process-plugin-server-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/libSwiftInProcPluginServer.so -plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/plugins -plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/local/lib/swift/host/plugins -parse-as-library -o .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Side.o -index-unit-output-path /NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Side.o -index-store-path .build/out -index-system-modules",
         "error: Build failed",
         "make: *** [Makefile:19: build] Error 1"
       ]
@@ -201,8 +201,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.43 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (5.93 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -226,8 +226,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.54 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (5.71 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -252,8 +252,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.31 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (5.76 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -277,10 +277,10 @@
       ],
       "missing": [],
       "tail": [
-        "[131 / 136] nene-igo-product",
-        "[134 / 137] NeNeIgoTerminal",
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.34 secs)",
+        "[144 / 147] nene-igo-product",
+        "[144 / 147] NeNeIgoTerminal",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.16 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "Sources/nene-igo/main.swift:41:83: error: Force Unwrapping Violation: Force unwrapping should be avoided (force_unwrapping)",
@@ -303,8 +303,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.49 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.82 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -329,8 +329,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.40 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.46 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -354,10 +354,10 @@
       ],
       "missing": [],
       "tail": [
-        "[131 / 136] nene-igo-product",
-        "[134 / 137] NeNeIgoTerminal",
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.50 secs)",
+        "[141 / 146] NeNeIgoTerminal",
+        "[144 / 147] NeNeIgoTerminal",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.63 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "Sources/NeNeIgoCore/Probe.swift:4:29: error: Large Tuple Violation: Tuples should have at most 2 members (large_tuple)",
@@ -380,8 +380,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.44 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.37 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -406,8 +406,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.44 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.65 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -432,8 +432,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.30 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.63 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -457,10 +457,10 @@
       ],
       "missing": [],
       "tail": [
-        "[131 / 136] nene-igo-product",
-        "[134 / 137] NeNeIgoTerminal",
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.50 secs)",
+        "[141 / 146] NeNeIgoTerminal",
+        "[144 / 147] NeNeIgoTerminal",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.65 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "Sources/NeNeIgoCore/Probe.swift:4:12: error: Function Parameter Count Violation: Function should have 4 parameters or less: it currently has 5 (function_parameter_count)",
@@ -482,10 +482,10 @@
       ],
       "missing": [],
       "tail": [
-        "[131 / 136] nene-igo-product",
-        "[134 / 137] NeNeIgoTerminal",
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.37 secs)",
+        "[141 / 146] nene-igo-product",
+        "[144 / 147] NeNeIgoTerminal",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (7.39 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "Sources/NeNeIgoCore/Probe.swift:4:5: error: Cyclomatic Complexity Violation: Function should have complexity 10 or less; currently complexity is 11 (cyclomatic_complexity)",
@@ -508,8 +508,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.74 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.30 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -535,7 +535,7 @@
       ],
       "missing": [],
       "tail": [
-        "Build complete! (5.44 secs)",
+        "Build complete! (6.57 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -561,8 +561,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.50 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.61 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -587,8 +587,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.35 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.57 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -646,7 +646,7 @@
         "",
         "[#NoUsage]: <https://docs.swift.org/compiler/documentation/diagnostics/no-usage>",
         "Failed frontend command:",
-        "/root/.local/share/swiftly/toolchains/6.4.1/usr/bin/swift-frontend -frontend -c Sources/NeNeIgoCore/AreaScore.swift Sources/NeNeIgoCore/BoardCell.swift Sources/NeNeIgoCore/BoardSize.swift Sources/NeNeIgoCore/Captures.swift Sources/NeNeIgoCore/EmptyRegion.swift Sources/NeNeIgoCore/Game.swift Sources/NeNeIgoCore/GameResult.swift Sources/NeNeIgoCore/GameStatus.swift Sources/NeNeIgoCore/Komi.swift Sources/NeNeIgoCore/Move.swift Sources/NeNeIgoCore/MoveOutcome.swift Sources/NeNeIgoCore/MoveRejection.swift Sources/NeNeIgoCore/PlacementRejection.swift Sources/NeNeIgoCore/PlayOutcome.swift Sources/NeNeIgoCore/Point.swift Sources/NeNeIgoCore/PointState.swift Sources/NeNeIgoCore/Position+Chains.swift Sources/NeNeIgoCore/Position.swift Sources/NeNeIgoCore/PositionCodec.swift Sources/NeNeIgoCore/PositionDecodeOutcome.swift Sources/NeNeIgoCore/PositionDecodeRejection.swift Sources/NeNeIgoCore/PositionOutcome.swift Sources/NeNeIgoCore/PositionRejection.swift -primary-file Sources/NeNeIgoCore/Probe.swift Sources/NeNeIgoCore/Stone.swift Sources/NeNeIgoCore/Zobrist.swift -emit-dependencies-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.d -emit-const-values-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.swiftconstvalues -emit-reference-dependencies-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.swiftdeps -serialize-diagnostics-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.dia -target x86_64-unknown-linux-gnu -disable-objc-interop -I .build/out/Products/Debug-linux-x86_64 -module-cache-path .build/out/ModuleCache.noindex -no-color-diagnostics -Xcc -fno-color-diagnostics -enable-testing -g -debug-info-format\\=dwarf -dwarf-version\\=4 -warnings-as-errors -warnings-as-errors -swift-version 6 -Onone -D SWIFT_PACKAGE -D DEBUG -D SWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE -D Xcode -serialize-debugging-options -enable-upcoming-feature ExistentialAny -enable-experimental-feature DebugDescriptionMacro -empty-abi-descriptor -external-plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/plugins/testing\\#/root/.local/share/swiftly/toolchains/6.4.1/usr/bin/swift-plugin-server -validate-clang-modules-once -clang-build-session-file .build/out/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc /tmp/igo-proof-P24-ddg61ptv -enable-anonymous-context-mangled-names -file-compilation-dir /tmp/igo-proof-P24-ddg61ptv -Xcc -fno-omit-frame-pointer -Xcc -D_LIBCPP_HARDENING_MODE\\=_LIBCPP_HARDENING_MODE_DEBUG -Xcc -fmodules-prune-interval\\=86400 -Xcc -fmodules-prune-after\\=345600 -Xcc -I.build/out/Products/Debug-linux-x86_64/include -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources-normal/x86_64 -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources/x86_64 -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\\=1 -no-auto-bridging-header-chaining -module-name NeNeIgoCore -package-name repo -const-gather-protocols-file .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/NeNeIgoCore_const_extract_protocols.json -in-process-plugin-server-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/libSwiftInProcPluginServer.so -plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/plugins -plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/local/lib/swift/host/plugins -parse-as-library -o .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.o -index-unit-output-path /NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.o -index-store-path .build/out -index-system-modules",
+        "/root/.local/share/swiftly/toolchains/6.4.1/usr/bin/swift-frontend -frontend -c Sources/NeNeIgoCore/AreaScore.swift Sources/NeNeIgoCore/BoardCell.swift Sources/NeNeIgoCore/BoardSize.swift Sources/NeNeIgoCore/EmptyRegion.swift Sources/NeNeIgoCore/Game.swift Sources/NeNeIgoCore/GameResult.swift Sources/NeNeIgoCore/GameStatus.swift Sources/NeNeIgoCore/Komi.swift Sources/NeNeIgoCore/Move.swift Sources/NeNeIgoCore/MoveApplication.swift Sources/NeNeIgoCore/MoveOutcome.swift Sources/NeNeIgoCore/MoveRejection.swift Sources/NeNeIgoCore/Placement.swift Sources/NeNeIgoCore/PlacementRejection.swift Sources/NeNeIgoCore/PlayOutcome.swift Sources/NeNeIgoCore/Point.swift Sources/NeNeIgoCore/PointState.swift Sources/NeNeIgoCore/Position+Chains.swift Sources/NeNeIgoCore/Position.swift Sources/NeNeIgoCore/PositionCodec.swift Sources/NeNeIgoCore/PositionDecodeOutcome.swift Sources/NeNeIgoCore/PositionDecodeRejection.swift Sources/NeNeIgoCore/PositionOutcome.swift Sources/NeNeIgoCore/PositionRejection.swift -primary-file Sources/NeNeIgoCore/Probe.swift Sources/NeNeIgoCore/Stone.swift Sources/NeNeIgoCore/Zobrist.swift -emit-dependencies-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.d -emit-const-values-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.swiftconstvalues -emit-reference-dependencies-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.swiftdeps -serialize-diagnostics-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.dia -target x86_64-unknown-linux-gnu -disable-objc-interop -I .build/out/Products/Debug-linux-x86_64 -module-cache-path .build/out/ModuleCache.noindex -no-color-diagnostics -Xcc -fno-color-diagnostics -enable-testing -g -debug-info-format\\=dwarf -dwarf-version\\=4 -warnings-as-errors -warnings-as-errors -swift-version 6 -Onone -D SWIFT_PACKAGE -D DEBUG -D SWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE -D Xcode -serialize-debugging-options -enable-upcoming-feature ExistentialAny -enable-experimental-feature DebugDescriptionMacro -empty-abi-descriptor -external-plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/plugins/testing\\#/root/.local/share/swiftly/toolchains/6.4.1/usr/bin/swift-plugin-server -validate-clang-modules-once -clang-build-session-file .build/out/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc /tmp/igo-proof-P24-dugf9eiy -enable-anonymous-context-mangled-names -file-compilation-dir /tmp/igo-proof-P24-dugf9eiy -Xcc -fno-omit-frame-pointer -Xcc -D_LIBCPP_HARDENING_MODE\\=_LIBCPP_HARDENING_MODE_DEBUG -Xcc -fmodules-prune-interval\\=86400 -Xcc -fmodules-prune-after\\=345600 -Xcc -I.build/out/Products/Debug-linux-x86_64/include -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources-normal/x86_64 -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources/x86_64 -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\\=1 -no-auto-bridging-header-chaining -module-name NeNeIgoCore -package-name repo -const-gather-protocols-file .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/NeNeIgoCore_const_extract_protocols.json -in-process-plugin-server-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/libSwiftInProcPluginServer.so -plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/plugins -plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/local/lib/swift/host/plugins -parse-as-library -o .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.o -index-unit-output-path /NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.o -index-store-path .build/out -index-system-modules",
         "error: Build failed",
         "make: *** [Makefile:19: build] Error 1"
       ]
@@ -667,8 +667,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.31 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.42 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -693,8 +693,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.53 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (7.02 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -718,11 +718,11 @@
       ],
       "missing": [],
       "tail": [
-        "[131 / 136] NeNeIgoTerminal",
-        "[131 / 136] nene-igo-product",
-        "[134 / 137] NeNeIgoTerminal",
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.48 secs)",
+        "[141 / 146] nene-igo-product",
+        "[141 / 146] NeNeIgoTerminal",
+        "[144 / 147] NeNeIgoTerminal",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.93 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "Sources/NeNeIgoRender/Cell.swift:7:1: error: [Indentation] indent by 2 spaces",
         "make: *** [Makefile:31: format] Error 123"
@@ -744,8 +744,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.36 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.52 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -770,9 +770,9 @@
       ],
       "missing": [],
       "tail": [
-        "[134 / 137] NeNeIgoTerminal",
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.73 secs)",
+        "[144 / 147] NeNeIgoTerminal",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.72 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "warning: Skipping enabled rule 'statement_position' because it requires SourceKit and SourceKit access is prohibited.",
@@ -791,16 +791,16 @@
       "expected": "^CNF-006 docs/todo/current\\.md",
       "verdict": "pass",
       "evidence": [
-        "CNF-006 docs/todo/current.md:31: 未定義の規則 ID ARC-099"
+        "CNF-006 docs/todo/current.md:32: 未定義の規則 ID ARC-099"
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.45 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.42 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
-        "CNF-006 docs/todo/current.md:31: 未定義の規則 ID ARC-099",
+        "CNF-006 docs/todo/current.md:32: 未定義の規則 ID ARC-099",
         "conformance: 22 規則・違反 1 件",
         "make: *** [Makefile:37: conformance] Error 1"
       ]
@@ -820,8 +820,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.35 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (5.83 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -845,8 +845,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.55 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.73 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -870,8 +870,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.44 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.78 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -913,13 +913,13 @@
       "expected": "(FAILED|did NOT match)",
       "verdict": "pass",
       "evidence": [
-        "/tmp/tmp.V9xpOqqo46/swiftlint_linux_amd64.zip: FAILED",
+        "/tmp/tmp.AqAJbXTqNb/swiftlint_linux_amd64.zip: FAILED",
         "sha256sum: WARNING: 1 computed checksum did NOT match"
       ],
       "missing": [],
       "tail": [
         "eng/install-tools.sh",
-        "/tmp/tmp.V9xpOqqo46/swiftlint_linux_amd64.zip: FAILED",
+        "/tmp/tmp.AqAJbXTqNb/swiftlint_linux_amd64.zip: FAILED",
         "sha256sum: WARNING: 1 computed checksum did NOT match",
         "make: *** [Makefile:16: tools] Error 1"
       ]
@@ -941,8 +941,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.46 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.36 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -966,8 +966,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.43 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.82 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -992,8 +992,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.51 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.32 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -1062,8 +1062,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.40 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.52 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -1088,8 +1088,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.37 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.64 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -1109,17 +1109,17 @@
       "expected": "GIT-003 [0-9a-f]{7}: 件名は",
       "verdict": "pass",
       "evidence": [
-        "GIT-003 3de23e1: 件名は `<type>(<scope>): <日本語の説明> (#<issue番号>)` の形（type は feat / fix / docs / refactor / test / build / ci / chore）"
+        "GIT-003 9d9f3d5: 件名は `<type>(<scope>): <日本語の説明> (#<issue番号>)` の形（type は feat / fix / docs / refactor / test / build / ci / chore）"
       ],
       "missing": [],
       "tail": [
         "python3 eng/validate-commit-message.py --range \"origin/main..HEAD\"",
         "commits: 2 件・違反 1 件",
         "----------------------------------------------------------------------",
-        "Ran 101 tests in 0.260s",
+        "Ran 101 tests in 0.265s",
         "",
         "OK",
-        "GIT-003 3de23e1: 件名は `<type>(<scope>): <日本語の説明> (#<issue番号>)` の形（type は feat / fix / docs / refactor / test / build / ci / chore）",
+        "GIT-003 9d9f3d5: 件名は `<type>(<scope>): <日本語の説明> (#<issue番号>)` の形（type は feat / fix / docs / refactor / test / build / ci / chore）",
         "make: *** [Makefile:43: commits] Error 1"
       ]
     },
@@ -1183,12 +1183,12 @@
       ],
       "missing": [],
       "tail": [
-        "[119 / 130] NeNeIgoTerminal",
-        "[130 / 136] nene-igo-product",
-        "[131 / 136] NeNeIgoTerminal",
-        "[134 / 137] NeNeIgoTerminal",
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.58 secs)",
+        "[140 / 146] nene-igo-product",
+        "[141 / 146] nene-igo-product",
+        "[144 / 147] nene-igo-product",
+        "[144 / 147] NeNeIgoTerminal",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.52 secs)",
         "swift-strict: SwiftPM かコンパイラが警告を出した（QLT-002）",
         "make: *** [Makefile:19: build] Error 1"
       ]
@@ -1212,7 +1212,7 @@
         "smoke: ok  端末の外からは exit 1 で理由を 1 行",
         "smoke: 失敗 5 件",
         "----------------------------------------------------------------------",
-        "Ran 101 tests in 0.260s",
+        "Ran 101 tests in 0.491s",
         "",
         "OK",
         "make: *** [Makefile:28: smoke] Error 1"
@@ -1230,15 +1230,15 @@
       "verdict": "pass",
       "evidence": [
         "✘ Test everyArrangementIsCountedLikeTromp(_:) recorded an issue with 1 argument expected → 3x3 = 12676 at LegalPositionCountTests.swift:20:9: Expectation failed: legal == expected.legalPositions",
-        "✘ Test everyArrangementIsCountedLikeTromp(_:) with 19 test cases failed after 24.268 seconds with 1 issue."
+        "✘ Test everyArrangementIsCountedLikeTromp(_:) with 19 test cases failed after 21.517 seconds with 1 issue."
       ],
       "missing": [],
       "tail": [
-        "✘ Test run with 29 tests in 8 suites failed after 32.092 seconds with 2 issues.",
+        "✘ Test run with 29 tests in 8 suites failed after 28.942 seconds with 2 issues.",
         "Note: Some test targets reported failures:",
         "  - NeNeIgoCoreTests (Swift Testing)",
         "----------------------------------------------------------------------",
-        "Ran 101 tests in 0.266s",
+        "Ran 101 tests in 0.274s",
         "",
         "OK",
         "make: *** [Makefile:23: test] Error 1"
@@ -1265,7 +1265,7 @@
         " 6 |         case \"a\":",
         " 7 |             return 1",
         "Failed frontend command:",
-        "/root/.local/share/swiftly/toolchains/6.4.1/usr/bin/swift-frontend -frontend -c Sources/NeNeIgoCore/AreaScore.swift Sources/NeNeIgoCore/BoardCell.swift Sources/NeNeIgoCore/BoardSize.swift Sources/NeNeIgoCore/Captures.swift Sources/NeNeIgoCore/EmptyRegion.swift Sources/NeNeIgoCore/Game.swift Sources/NeNeIgoCore/GameResult.swift Sources/NeNeIgoCore/GameStatus.swift Sources/NeNeIgoCore/Komi.swift Sources/NeNeIgoCore/Move.swift Sources/NeNeIgoCore/MoveOutcome.swift Sources/NeNeIgoCore/MoveRejection.swift Sources/NeNeIgoCore/PlacementRejection.swift Sources/NeNeIgoCore/PlayOutcome.swift Sources/NeNeIgoCore/Point.swift Sources/NeNeIgoCore/PointState.swift Sources/NeNeIgoCore/Position+Chains.swift Sources/NeNeIgoCore/Position.swift Sources/NeNeIgoCore/PositionCodec.swift Sources/NeNeIgoCore/PositionDecodeOutcome.swift Sources/NeNeIgoCore/PositionDecodeRejection.swift Sources/NeNeIgoCore/PositionOutcome.swift Sources/NeNeIgoCore/PositionRejection.swift -primary-file Sources/NeNeIgoCore/Probe.swift Sources/NeNeIgoCore/Stone.swift Sources/NeNeIgoCore/Zobrist.swift -emit-dependencies-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.d -emit-const-values-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.swiftconstvalues -emit-reference-dependencies-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.swiftdeps -serialize-diagnostics-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.dia -target x86_64-unknown-linux-gnu -disable-objc-interop -I .build/out/Products/Debug-linux-x86_64 -module-cache-path .build/out/ModuleCache.noindex -no-color-diagnostics -Xcc -fno-color-diagnostics -enable-testing -g -debug-info-format\\=dwarf -dwarf-version\\=4 -warnings-as-errors -warnings-as-errors -swift-version 6 -Onone -D SWIFT_PACKAGE -D DEBUG -D SWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE -D Xcode -serialize-debugging-options -enable-upcoming-feature ExistentialAny -enable-experimental-feature DebugDescriptionMacro -empty-abi-descriptor -external-plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/plugins/testing\\#/root/.local/share/swiftly/toolchains/6.4.1/usr/bin/swift-plugin-server -validate-clang-modules-once -clang-build-session-file .build/out/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc /tmp/igo-proof-P50-2pfqggri -enable-anonymous-context-mangled-names -file-compilation-dir /tmp/igo-proof-P50-2pfqggri -Xcc -fno-omit-frame-pointer -Xcc -D_LIBCPP_HARDENING_MODE\\=_LIBCPP_HARDENING_MODE_DEBUG -Xcc -fmodules-prune-interval\\=86400 -Xcc -fmodules-prune-after\\=345600 -Xcc -I.build/out/Products/Debug-linux-x86_64/include -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources-normal/x86_64 -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources/x86_64 -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\\=1 -no-auto-bridging-header-chaining -module-name NeNeIgoCore -package-name repo -const-gather-protocols-file .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/NeNeIgoCore_const_extract_protocols.json -in-process-plugin-server-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/libSwiftInProcPluginServer.so -plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/plugins -plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/local/lib/swift/host/plugins -parse-as-library -o .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.o -index-unit-output-path /NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.o -index-store-path .build/out -index-system-modules",
+        "/root/.local/share/swiftly/toolchains/6.4.1/usr/bin/swift-frontend -frontend -c Sources/NeNeIgoCore/AreaScore.swift Sources/NeNeIgoCore/BoardCell.swift Sources/NeNeIgoCore/BoardSize.swift Sources/NeNeIgoCore/EmptyRegion.swift Sources/NeNeIgoCore/Game.swift Sources/NeNeIgoCore/GameResult.swift Sources/NeNeIgoCore/GameStatus.swift Sources/NeNeIgoCore/Komi.swift Sources/NeNeIgoCore/Move.swift Sources/NeNeIgoCore/MoveApplication.swift Sources/NeNeIgoCore/MoveOutcome.swift Sources/NeNeIgoCore/MoveRejection.swift Sources/NeNeIgoCore/Placement.swift Sources/NeNeIgoCore/PlacementRejection.swift Sources/NeNeIgoCore/PlayOutcome.swift Sources/NeNeIgoCore/Point.swift Sources/NeNeIgoCore/PointState.swift Sources/NeNeIgoCore/Position+Chains.swift Sources/NeNeIgoCore/Position.swift Sources/NeNeIgoCore/PositionCodec.swift Sources/NeNeIgoCore/PositionDecodeOutcome.swift Sources/NeNeIgoCore/PositionDecodeRejection.swift Sources/NeNeIgoCore/PositionOutcome.swift Sources/NeNeIgoCore/PositionRejection.swift -primary-file Sources/NeNeIgoCore/Probe.swift Sources/NeNeIgoCore/Stone.swift Sources/NeNeIgoCore/Zobrist.swift -emit-dependencies-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.d -emit-const-values-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.swiftconstvalues -emit-reference-dependencies-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.swiftdeps -serialize-diagnostics-path .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.dia -target x86_64-unknown-linux-gnu -disable-objc-interop -I .build/out/Products/Debug-linux-x86_64 -module-cache-path .build/out/ModuleCache.noindex -no-color-diagnostics -Xcc -fno-color-diagnostics -enable-testing -g -debug-info-format\\=dwarf -dwarf-version\\=4 -warnings-as-errors -warnings-as-errors -swift-version 6 -Onone -D SWIFT_PACKAGE -D DEBUG -D SWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE -D Xcode -serialize-debugging-options -enable-upcoming-feature ExistentialAny -enable-experimental-feature DebugDescriptionMacro -empty-abi-descriptor -external-plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/plugins/testing\\#/root/.local/share/swiftly/toolchains/6.4.1/usr/bin/swift-plugin-server -validate-clang-modules-once -clang-build-session-file .build/out/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc /tmp/igo-proof-P50-enllwsxx -enable-anonymous-context-mangled-names -file-compilation-dir /tmp/igo-proof-P50-enllwsxx -Xcc -fno-omit-frame-pointer -Xcc -D_LIBCPP_HARDENING_MODE\\=_LIBCPP_HARDENING_MODE_DEBUG -Xcc -fmodules-prune-interval\\=86400 -Xcc -fmodules-prune-after\\=345600 -Xcc -I.build/out/Products/Debug-linux-x86_64/include -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources-normal/x86_64 -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources/x86_64 -Xcc -I.build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\\=1 -no-auto-bridging-header-chaining -module-name NeNeIgoCore -package-name repo -const-gather-protocols-file .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/NeNeIgoCore_const_extract_protocols.json -in-process-plugin-server-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/libSwiftInProcPluginServer.so -plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/lib/swift/host/plugins -plugin-path /root/.local/share/swiftly/toolchains/6.4.1/usr/local/lib/swift/host/plugins -parse-as-library -o .build/out/Intermediates.noindex/NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.o -index-unit-output-path /NeNeIgo.build/Debug-linux-x86_64/NeNeIgoCore-t.build/Objects-normal/x86_64/Probe.o -index-store-path .build/out -index-system-modules",
         "error: Build failed",
         "make: *** [Makefile:19: build] Error 1"
       ]
@@ -1286,8 +1286,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.70 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.69 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -1312,8 +1312,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.58 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.28 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -1338,8 +1338,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.39 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.13 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -1364,8 +1364,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.46 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.29 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -1390,8 +1390,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.34 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.14 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -1440,8 +1440,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.40 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.22 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -1467,8 +1467,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.42 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.47 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -1495,8 +1495,8 @@
       ],
       "missing": [],
       "tail": [
-        "[138 / 138] nene-igo-product",
-        "Build complete! (5.88 secs)",
+        "[148 / 148] nene-igo-product",
+        "Build complete! (6.87 secs)",
         "eng/swift-sources.sh | xargs -0 swift-format lint --strict --configuration .swift-format",
         "eng/lint.sh .tools/swiftlint --config .swiftlint.yml",
         "python3 eng/conformance.py",
@@ -1524,7 +1524,7 @@
         "AssertionError: 'CNF-013' not found in [] : CNF-013 が Sources/Core/Board.swift で発火しない",
         "",
         "----------------------------------------------------------------------",
-        "Ran 101 tests in 0.249s",
+        "Ran 101 tests in 0.262s",
         "",
         "FAILED (failures=8)",
         "make: *** [Makefile:40: conformance-test] Error 1"
