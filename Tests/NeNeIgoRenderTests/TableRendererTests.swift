@@ -1,7 +1,7 @@
 import NeNeIgoCore
-import NeNeIgoEngine
 import Testing
 
+@testable import NeNeIgoEngine
 @testable import NeNeIgoRender
 
 /// 1 画面分の格子（FR-07・FR-10・FR-15・ADR 0007）。
@@ -12,7 +12,7 @@ struct TableRendererTests {
     /// シード 3 で `steps` 歩進めた列の画面。
     static func render(steps: Int, size: ScreenSize = size, countdown: Countdown? = nil) -> (GameSeries, Grid) {
         var generator = SplitMix64(seed: 3)
-        var series = GameSeries.first
+        var series = GameSeries.first(roster: Quick.roster, using: &generator)
         for _ in 0..<steps {
             series = series.advanced(using: &generator)
         }
@@ -109,11 +109,13 @@ struct TableRendererTests {
         #expect(Self.cells(grid).filter { $0.character == "]" }.count == 1)
     }
 
-    @Test func hudShowsTheGameTheTurnCapturesAndKomi() {
-        let (_, grid) = Self.render(steps: 1)
+    @Test func hudShowsTheGameTheCastTheTurnCapturesAndKomi() {
+        let (series, grid) = Self.render(steps: 1)
         let text = Self.text(grid)
         #expect(text.contains("NENE//IGO"))
         #expect(text.contains("GAME   001"))
+        #expect(text.contains("BLACK  \(series.players.black.name)"))
+        #expect(text.contains("WHITE  \(series.players.white.name)"))
         #expect(text.contains("TURN   WHITE"))
         #expect(text.contains("MOVES  001"))
         #expect(text.contains("CAPS   B 000  W 000"))
@@ -124,7 +126,7 @@ struct TableRendererTests {
 
     @Test func finishedGameShowsTheResultAndTheCountdown() throws {
         var generator = SplitMix64(seed: 3)
-        var series = GameSeries.first
+        var series = GameSeries.first(roster: Quick.roster, using: &generator)
         while case .ongoing = series.game.status {
             series = series.advanced(using: &generator)
         }

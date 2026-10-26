@@ -25,3 +25,4 @@ ADR は「なぜそう決めたか」「何を却下したか」を書く。
 | [0007](0007-board-drawing-and-random-player.md) | 交点は 3 桁 × 1 行（`+` と `-` の ASCII の線・`*` の星・2 桁の石）、乱数の打ち手は自分の眼を埋めない | 受理（石の塗り方は 0009 で補う） |
 | [0008](0008-terminal-loop-and-signals.md) | 端末と 1 本のループは NeNe Reversi から移植し、Terminal の標準モジュールに Synchronization を足す | 受理 |
 | [0009](0009-stones-underlined-in-board-color.md) | 石のセルに碁盤の地の色の下線を引き、縦に並んだ石を 1 つずつ離して見せる | 受理 |
+| [0010](0010-mcts-playouts-and-cast.md) | MCTS（UCT）はプレイアウト数で打ち切り、Core は同じ `apply` の経路のまま速くし、キャスト 4 名は探索の設定で性格を分ける | 受理 |

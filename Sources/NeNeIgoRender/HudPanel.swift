@@ -1,7 +1,7 @@
 import NeNeIgoCore
 import NeNeIgoEngine
 
-/// HUD の中身（FR-10 のうち手順 2 の分）: 局と手番と手数・アゲハマとコミ・通算の勝敗・終局の結果と秒読み・直近の手。
+/// HUD の中身（FR-10）: 局・黒白のキャストの名前・手番と手数・アゲハマとコミ・通算の勝敗・終局の結果と秒読み・直近の手。
 enum HudPanel {
     /// 上から並べる行。直近の手は `height` に収まるだけ（新しい手が下）。
     static func lines(_ state: ScreenState, height: Int) -> [HudLine] {
@@ -10,6 +10,8 @@ enum HudPanel {
         var lines = [
             HudLine(text: Wording.match, heading: true),
             HudLine(text: Wording.game(series.gameNumber), heading: false),
+            HudLine(text: Wording.player(.black, series.players.black.name), heading: false),
+            HudLine(text: Wording.player(.white, series.players.white.name), heading: false),
             HudLine(text: Wording.turn(turn(game)), heading: false),
             HudLine(text: Wording.moveCount(game.moves.count), heading: false),
             HudLine(text: Wording.captures(black: game.capturedByBlack, white: game.capturedByWhite), heading: false),
