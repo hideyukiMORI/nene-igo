@@ -4,7 +4,7 @@ import Synchronization
 
 /// 端末そのもの（termios・alternate screen・シグナル・キー入力・大きさ）。可変性の隔離区画（ARC-005）で、
 /// `unsafe` 系 API を使ってよい唯一の target の中にある（SWF-009）。
-/// 移植元: NeNe Reversi `Sources/NeNeReversiTerminal/Console.swift`（コミット e4a6f52。Reversi は NeNe Gambit の 64b82ec から移植した）。罫線の幅の問い合わせは手順 5 で足す。
+/// 移植元: NeNe Reversi `Sources/NeNeReversiTerminal/Console.swift`（コミット e4a6f52。Reversi は NeNe Gambit の 64b82ec から移植した）。罫線の幅の問い合わせは Reversi の 0ee4526 の形（ADR 0011）。
 ///
 /// 並行の形は 1 つ（ADR 0008）: 合成ルートの 1 本のループが `waitForInput` で待ち、シグナルハンドラは原子的な旗を立てるだけ。
 /// 例外は「異常終了のシグナル」で、ハンドラがその場で端末を戻してから既定の動作で死ぬ（FR-08）。
@@ -67,6 +67,18 @@ public enum Console {
         bytes.withUnsafeBufferPointer { buffer in
             _ = Glibc.write(STDERR_FILENO, buffer.baseAddress, buffer.count)
         }
+    }
+
+    /// 文字列を行頭に書いたときにカーソルが何桁進むかを端末に問い合わせる（カーソル位置の報告 `ESC [ 6 n`）。
+    /// 罫線の文字が 1 桁で描かれるかを確かめるために使う（ADR 0011）。0.3 秒以内に答えが無ければ nil。
+    public static func columnsAdvanced(by text: String) -> Int? {
+        write(Array(("\r" + text + "\u{1B}[6n").utf8))
+        var reply: [UInt8] = []
+        for _ in 0..<3 where !reply.contains(UInt8(ascii: "R")) {
+            reply += waitForInput(milliseconds: 100)
+        }
+        write(Array(("\r" + String(repeating: " ", count: text.count * 2) + "\r").utf8))
+        return CursorReport.column(in: reply).map { $0 - 1 }
     }
 
     /// キー入力を最大 `milliseconds` だけ待ち、届いたバイトを返す。シグナルで起きたら空で返る。

@@ -249,7 +249,7 @@ CNF-006 が「本文に定義があるのにここに行が無い」「本文と
 | `conformance-test` | 規約検査の正例・反例 | `python3 -m unittest discover -s eng/tests` |
 | `commits` | コミットの形 | `eng/validate-commit-message.py --range $(BASE)..HEAD` |
 | `test` | 振る舞い | `eng/swift-strict.sh swift test -c release`（合法局面数が Tromp の公表値と一致・ADR 0006。描画・端末の単体テスト・ADR 0007・0008） |
-| `smoke` | 端末の復元 | 実行ファイルを疑似端末で動かす `eng/smoke-terminal.py`（`q`・Ctrl+C・SIGTERM・SIGSEGV・大きさの変化・ADR 0008） |
+| `smoke` | 端末の復元と画面 | 実行ファイルを疑似端末で動かす `eng/smoke-terminal.py`（`q`・Ctrl+C・SIGTERM・SIGSEGV・大きさの変化・`t` のテーマ・ASCII の枠への退避・ADR 0008・0011） |
 | カバレッジ | 中核の検証密度 | **まだ無い**（QLT-009） |
 | 依存 | 再現性 | 外部依存 0。CNF-009 が許可リスト外を拒否 |
 

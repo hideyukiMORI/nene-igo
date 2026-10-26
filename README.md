@@ -7,7 +7,7 @@ with no external engine. It is a sibling of [NeNe Gambit](https://github.com/hid
 
 🚧 **Early.** `nene-igo` draws two of four AI characters playing each other on a 19x19 board with Monte Carlo tree search,
 game after game, and restores the terminal however it ends. The rules (captures, suicide, positional superko, passes, area scoring) match the counts of
-legal positions on 19 small boards published by John Tromp. The themes and the banter come next.
+legal positions on 19 small boards published by John Tromp. Twelve color themes (`t` or `--theme`), and the cast comments on the game. Releases come next.
 
 ## Development
 

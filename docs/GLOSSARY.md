@@ -38,6 +38,8 @@
 | プレイアウト（playout） | 局面から終局まで、方針に従って乱数で打ち切ること。Core の合法判定を通る | `NeNeIgoEngine` |
 | 眼（eye） | プレイアウトの方針で「自分の眼を埋めない」と言うときの、自分の石だけに縦横を囲まれた空点（正確な定義は Phase 3 の ADR で決める） | `NeNeIgoEngine` |
 | キャスト（cast）・性格（persona） | 黒白を受け持つ 4 名のキャラクター（SENTE.SYS・TENUKI.LOG・MOYO.PNG・SEKI.LCK）。プレイアウト数・探索の係数・プレイアウトの手の好み・セリフの組（FR-06・FR-14・ADR 0010） | `Persona`（`NeNeIgoEngine`） |
+| COMMS | 盤の下の 2 行。キャストの顔とセリフ（FR-14・ADR 0011） | `Banter`（`NeNeIgoEngine`） |
+| テーマ（theme） | 12 種類の配色。`t` で巡り、`--theme <名前>` で選ぶ（FR-12・FR-13） | `Theme`（`NeNeIgoRender`） |
 | シード（seed） | 自前の PRNG の初期値。同じシードからは同じ対局の列と同じセリフが出る | 合成ルートが読み、Engine に渡す |
 | セル格子 | 端末の 1 画面分の文字セルの 2 次元配列。Render が作り、Terminal が差分で書く | `NeNeIgoRender` |
 
