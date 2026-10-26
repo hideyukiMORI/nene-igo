@@ -5,9 +5,8 @@ Written in Swift for Ubuntu on WSL2 and Windows Terminal. The AI (rules, Monte C
 with no external engine. It is a sibling of [NeNe Gambit](https://github.com/hideyukiMORI/nene-gambit) (chess) and
 [NeNe Reversi](https://github.com/hideyukiMORI/nene-reversi).
 
-🚧 **Nothing runs yet.** The rules and the gate are being put in place before any product code is written (Issue #1).
-The first product code will be the board and the rules, with no screen, and nothing is drawn until the counts of legal positions on small boards
-match the published ones.
+🚧 **Nothing to watch yet.** The rules are in (captures, suicide, positional superko, passes, area scoring), with no screen.
+The counts of legal positions on 19 small boards match the ones published by John Tromp. Drawing comes next.
 
 ## Development
 
