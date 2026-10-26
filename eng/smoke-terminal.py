@@ -56,20 +56,43 @@ def run(binary: str, keys: list[bytes], send: int | None = None, shrink: bool = 
                 except OSError:
                     return
 
+    def pump_until(marker: bytes, after: int, seconds: float) -> int:
+        # 探索中（最大 1 秒ほど）は描き直しが遅れるので、決まった秒数ではなく文言が出るまで読む
+        end = time.time() + seconds
+        while time.time() < end:
+            found = b"".join(chunks).find(marker, after)
+            if found >= 0:
+                return found
+            pump(0.05)
+        return -1
+
     pump(1.5)
     if shrink:
         # 大きさを変えると、端末は前面のプロセスに SIGWINCH を送る
+        start = len(b"".join(chunks))
         fcntl.ioctl(slave, termios.TIOCSWINSZ, struct.pack("HHHH", 10, 40, 0, 0))
-        pump(0.5)
+        small = pump_until(b"TERMINAL TOO SMALL", start, 5)
         fcntl.ioctl(slave, termios.TIOCSWINSZ, struct.pack("HHHH", 30, 110, 0, 0))
-        pump(0.5)
+        pump_until(GAME.encode(), max(small, start), 5)
     for key in keys:
         os.write(master, key)
-        pump(0.5)
+        # 探索（最大 1 秒ほど）が終わってキーを読み、描き直すまで待つ。短いと次のキーと一緒に読まれ、描き直す前に終わる
+        pump(1.5)
     if send is not None:
         os.kill(pid, send)
         pump(0.5)
-    _, status = os.waitpid(pid, 0)
+    # 終わるまで読み続ける。読まずに待つと、探索中（最大 1 秒ほど）に描いた出力で端末のバッファが埋まり、
+    # 書き込みで止まった実行ファイルがキーを読めず、両方が待ち合って終わらない。10 秒で終わらなければ止めて失敗にする
+    deadline = time.time() + 10
+    while True:
+        done, status = os.waitpid(pid, os.WNOHANG)
+        if done:
+            break
+        if time.time() > deadline:
+            os.kill(pid, signal.SIGKILL)
+            _, status = os.waitpid(pid, 0)
+            break
+        pump(0.05)
     pump(0.2)
     restored = termios.tcgetattr(slave)[3] == before[3]
     os.close(master)
