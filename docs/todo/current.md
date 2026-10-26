@@ -14,8 +14,8 @@
 | Phase 3-2 ランダムに打つ対局を画面に出す | ✅ 2026-10-26（Issue #5・PR #6・ADR 0007・0008） |
 | Phase 3-3 実機の画面写真 | ✅ 2026-10-26（Issue #7・PR #8・縦に接する石を下線で離した・ADR 0009。施主の見た目の確認は未） |
 | Phase 3-4 MCTS とキャスト | ✅ 2026-10-26（Issue #9・PR #10・ADR 0010） |
-| Phase 3-5 サイバー HUD・12 テーマ・セリフ | 🔄 Issue #11（ADR 0011） |
-| Phase 4 公開 | 🔲 別 Issue |
+| Phase 3-5 サイバー HUD・12 テーマ・セリフ | ✅ 2026-10-26（Issue #11・PR #12・ADR 0011） |
+| Phase 4 公開 | 🔄 Issue #13（公開の仕組みまで・ADR 0012。タグと Release は施主の確認を取ってから） |
 
 ## 動くもの
 
@@ -28,8 +28,8 @@
 - `main` への直接 push・force push が拒まれることは試していない（ruleset の読み戻しと PR の `BLOCKED` で代えた・gate-proofs 第 4 節）
 
 - 施主による見た目の確認（写真は撮った・ADR 0009）
-- 配布（Phase 4）
+- v0.1.0 の Release（未公開。タグも未）
 
 ## 次の 1 手
 
-Phase 4: 公開の仕組み（`Version.swift`・`make release`・成果物の検査・SHA256SUMS・`install.sh`・README 英語と README.ja.md・実機の写真）。
+施主の確認を取ってから v0.1.0 を公開する（DEVELOPMENT_WORKFLOW 第 9 節の手順）。公開後に Swift の無い環境で `install.sh` の 1 行から起動を確かめ、README の写真を公開した版で撮り直す。
