@@ -24,8 +24,10 @@ public enum FrameEncoder {
                 if cursor != position {
                     out += Array("\u{1B}[\(row + 1);\(column + 1)H".utf8)
                 }
-                if styled?.foreground != cell.foreground || styled?.background != cell.background {
-                    out += sgr(cell.foreground, cell.background, colors)
+                if styled?.foreground != cell.foreground || styled?.background != cell.background
+                    || styled?.style != cell.style
+                {
+                    out += sgr(cell, colors)
                     styled = cell
                 }
                 out += Array(String(cell.character).utf8)
@@ -38,14 +40,27 @@ public enum FrameEncoder {
         return out
     }
 
-    private static func sgr(_ foreground: Rgb, _ background: Rgb, _ colors: ColorMode) -> [UInt8] {
+    /// 色と下線の指定。下線は毎回 4（引く）か 24（引かない）を明示する（前のセルの指定を引き継がない）。
+    private static func sgr(_ cell: Cell, _ colors: ColorMode) -> [UInt8] {
+        let (foreground, background) = (cell.foreground, cell.background)
+        let line = underline(cell.style)
         switch colors {
         case .trueColor:
             let fg = "38;2;\(foreground.red);\(foreground.green);\(foreground.blue)"
             let bg = "48;2;\(background.red);\(background.green);\(background.blue)"
-            return Array("\u{1B}[\(fg);\(bg)m".utf8)
+            return Array("\u{1B}[\(line);\(fg);\(bg)m".utf8)
         case .palette256:
-            return Array("\u{1B}[38;5;\(Palette256.nearest(foreground));48;5;\(Palette256.nearest(background))m".utf8)
+            let fg = "38;5;\(Palette256.nearest(foreground))"
+            return Array("\u{1B}[\(line);\(fg);48;5;\(Palette256.nearest(background))m".utf8)
+        }
+    }
+
+    private static func underline(_ style: CellStyle) -> String {
+        switch style {
+        case .plain:
+            return "24"
+        case .underlined:
+            return "4"
         }
     }
 }

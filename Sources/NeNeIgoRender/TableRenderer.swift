@@ -6,7 +6,8 @@ public enum TableRenderer {
     /// 1 画面分の格子。
     public static func render(_ state: ScreenState, size: ScreenSize) -> Grid {
         let theme = state.theme
-        var grid = Grid.filled(size, with: Cell(character: " ", foreground: theme.text, background: theme.ground))
+        var grid = Grid.filled(
+            size, with: Cell(character: " ", foreground: theme.text, background: theme.ground, style: .plain))
         if size.columns >= minimumSize.columns && size.rows >= minimumSize.rows {
             ScreenLayout.standard.draw(state, into: &grid)
         } else {
