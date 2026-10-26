@@ -62,8 +62,15 @@ public struct BoardSize: Sendable, Hashable {
         return point
     }
 
-    /// 縦横に隣り合う 4 つの位置。
-    func neighbors(of index: Int) -> [Int] {
-        [index - stride, index - 1, index + 1, index + stride]
+    /// 縦横に隣り合う 4 つの位置の `k` 番目（0〜3: 下の行・左・右・上の行）。配列を作らずに回すため（ADR 0010）。
+    @inline(__always)
+    func neighbor(of index: Int, _ k: Int) -> Int {
+        if k == 0 {
+            return index - stride
+        }
+        if k == 1 {
+            return index - 1
+        }
+        return k == 2 ? index + 1 : index + stride
     }
 }

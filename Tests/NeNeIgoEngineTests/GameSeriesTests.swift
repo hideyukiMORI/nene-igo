@@ -8,7 +8,7 @@ struct GameSeriesTests {
     /// 局が `count` 個終わるまで進めた列の、各局の棋譜。
     static func records(seed: UInt64, count: Int) -> [[Move]] {
         var generator = SplitMix64(seed: seed)
-        var series = GameSeries.first
+        var series = GameSeries.first(roster: Quick.roster, using: &generator)
         var finished: [[Move]] = []
         while finished.count < count {
             let next = series.advanced(using: &generator)
@@ -31,7 +31,7 @@ struct GameSeriesTests {
     /// 1 歩ごとに、打った手は前の局から 1 手だけ伸び、Core が打てると言った手である。終局した局は数えて、次の局を空の盤から始める。
     @Test func everyStepIsOneLegalMoveAndFinishedGamesAreCounted() {
         var generator = SplitMix64(seed: 7)
-        var series = GameSeries.first
+        var series = GameSeries.first(roster: Quick.roster, using: &generator)
         while series.gameNumber <= 2 {
             let next = series.advanced(using: &generator)
             if next.gameNumber == series.gameNumber {
@@ -42,6 +42,7 @@ struct GameSeriesTests {
             } else {
                 #expect(series.game.status != .ongoing)
                 #expect(next.game == Game.starting(size: .nineteen, komi: .standard))
+                #expect(next.players.black != next.players.white)
                 #expect(next.tally.finishedGames == series.gameNumber)
             }
             series = next

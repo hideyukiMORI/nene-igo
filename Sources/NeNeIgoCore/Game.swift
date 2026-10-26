@@ -1,38 +1,32 @@
 /// 1 局の経過: いまの局面・打った手・アゲハマ・連続したパスの数・この局で現れた盤の配置（ARC-004）。
 ///
 /// 「合法か」（盤の外・占有・自殺手・局面スーパーコウ）・「終局したか」・「何目差か」を決める経路は、それぞれ
-/// `play(_:)`・`status`・`AreaScore.counting` の 1 つだけ（ARC-001）。手を打つと新しい値を返す。
+/// `apply(_:)`・`status`・`AreaScore.counting` の 1 つだけ（ARC-001）。`play(_:)` は写しに `apply(_:)` で打って新しい値を返す。
+/// プレイアウトは同じ `apply(_:)` で手元の写しを進める（第 2 の合法判定を作らない・ADR 0010）。
 public struct Game: Sendable, Hashable {
     /// いまの局面。
-    public let position: Position
+    public private(set) var position: Position
     /// 打った手の列（古い順・パスを含む）。
-    public let moves: [Move]
+    public private(set) var moves: [Move]
     /// コミ。
     public let komi: Komi
     /// 黒が取った白石の数（アゲハマ・FR-10）。
-    public let capturedByBlack: Int
+    public private(set) var capturedByBlack: Int
     /// 白が取った黒石の数。
-    public let capturedByWhite: Int
+    public private(set) var capturedByWhite: Int
     /// 直前まで続いたパスの数。
-    let consecutivePasses: Int
+    private(set) var consecutivePasses: Int
     /// この局で現れた盤の配置の Zobrist ハッシュ（始めの空の盤を含む・ADR 0005）。
-    let seenBoards: Set<UInt64>
+    private(set) var seenBoards: Set<UInt64>
 
-    private init(
-        position: Position,
-        moves: [Move],
-        komi: Komi,
-        captures: Captures,
-        consecutivePasses: Int,
-        seenBoards: Set<UInt64>
-    ) {
+    private init(position: Position, komi: Komi) {
         self.position = position
-        self.moves = moves
+        self.moves = []
         self.komi = komi
-        self.capturedByBlack = captures.byBlack
-        self.capturedByWhite = captures.byWhite
-        self.consecutivePasses = consecutivePasses
-        self.seenBoards = seenBoards
+        self.capturedByBlack = 0
+        self.capturedByWhite = 0
+        self.consecutivePasses = 0
+        self.seenBoards = [position.boardHash]
     }
 
     /// 空の盤から始まる 1 局（黒が先手・置き石なし）。
@@ -42,56 +36,62 @@ public struct Game: Sendable, Hashable {
 
     /// 与えた局面から始まる 1 局（テストで手作りの局面から打つため）。
     public static func starting(from position: Position, komi: Komi) -> Game {
-        Game(
-            position: position,
-            moves: [],
-            komi: komi,
-            captures: Captures(byBlack: 0, byWhite: 0),
-            consecutivePasses: 0,
-            seenBoards: [position.boardHash]
-        )
+        Game(position: position, komi: komi)
     }
 
     /// 局の状態。連続 2 回のパスで終局し、中国ルールの数え方とコミで勝敗を決める。
     public var status: GameStatus {
-        consecutivePasses >= 2 ? .finished(GameResult.deciding(AreaScore.counting(position), komi: komi)) : .ongoing
+        isOver ? .finished(GameResult.deciding(AreaScore.counting(position), komi: komi)) : .ongoing
     }
 
-    /// 手を打つ。パスは終局していなければ常に打てる。
+    /// 終局したか（数えずに知るため。プレイアウトの終わりの判定に使う）。
+    public var isOver: Bool {
+        consecutivePasses >= 2
+    }
+
+    /// 手を打った新しい局を返す（元の局は変えない）。
     public func play(_ move: Move) -> MoveOutcome {
+        var next = self
+        switch next.apply(move) {
+        case .applied:
+            return .played(next)
+        case .rejected(let reason):
+            return .rejected(reason)
+        }
+    }
+
+    /// 手をこの局に打つ（唯一の経路）。パスは終局していなければ常に打てる。拒んだときは局を変えない。
+    @discardableResult
+    public mutating func apply(_ move: Move) -> MoveApplication {
         guard consecutivePasses < 2 else {
             return .rejected(.gameOver)
         }
-        switch position.play(move) {
+        var next = position
+        let mover = position.toMove
+        let captured: Int
+        switch next.apply(move) {
         case .rejected(let reason):
             return .rejected(.placement(reason))
-        case .played(let next, let captured):
-            return advance(to: next, by: move, captured: captured)
-        }
-    }
-
-    private func advance(to next: Position, by move: Move, captured: Int) -> MoveOutcome {
-        var captures = Captures(byBlack: capturedByBlack, byWhite: capturedByWhite)
-        switch position.toMove {
-        case .black:
-            captures.byBlack += captured
-        case .white:
-            captures.byWhite += captured
+        case .placed(let count):
+            captured = count
         }
         switch move {
         case .pass:
-            let game = Game(
-                position: next, moves: moves + [move], komi: komi, captures: captures,
-                consecutivePasses: consecutivePasses + 1, seenBoards: seenBoards)
-            return .played(game)
+            consecutivePasses += 1
         case .place:
-            guard !seenBoards.contains(next.boardHash) else {
+            guard seenBoards.insert(next.boardHash).inserted else {
                 return .rejected(.superko)
             }
-            let game = Game(
-                position: next, moves: moves + [move], komi: komi, captures: captures,
-                consecutivePasses: 0, seenBoards: seenBoards.union([next.boardHash]))
-            return .played(game)
+            consecutivePasses = 0
         }
+        position = next
+        moves.append(move)
+        switch mover {
+        case .black:
+            capturedByBlack += captured
+        case .white:
+            capturedByWhite += captured
+        }
+        return .applied
     }
 }

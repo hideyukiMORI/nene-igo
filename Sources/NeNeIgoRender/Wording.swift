@@ -21,6 +21,11 @@ enum Wording {
         "GAME   " + padded(number, width: 3)
     }
 
+    /// その色を受け持つキャストの名前。
+    static func player(_ stone: Stone, _ persona: String) -> String {
+        name(stone) + "  " + persona
+    }
+
     static func turn(_ side: Stone?) -> String {
         "TURN   " + (side.map(name) ?? "OVER")
     }

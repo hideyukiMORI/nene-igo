@@ -42,7 +42,8 @@ public struct AreaScore: Sendable, Hashable {
         visited[start] = true
         while let index = stack.popLast() {
             region.points += 1
-            for neighbor in size.neighbors(of: index) {
+            for k in 0..<4 {
+                let neighbor = size.neighbor(of: index, k)
                 switch cells[neighbor] {
                 case .black:
                     region.touchesBlack = true

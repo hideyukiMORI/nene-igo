@@ -1,15 +1,16 @@
 /// 局面: 盤上の石と手番（ARC-004）。手を打つと新しい値を返す（ADR 0005）。
 ///
 /// 盤は番兵つきの 1 次元配列 `cells` で持ち、盤上の石の配置の Zobrist ハッシュ `boardHash` を差分で更新する。
-/// 「打てるか」（盤の外・占有・自殺手）と取りを決める経路は `play(_:)` だけ。局面スーパーコウは 1 局の履歴が要るので `Game` が見る。
+/// 「打てるか」（盤の外・占有・自殺手）と取りを決める経路は `apply(_:)` だけで、`play(_:)` はその写しに打つ（ADR 0010）。
+/// 局面スーパーコウは 1 局の履歴が要るので `Game` が見る。
 public struct Position: Sendable, Hashable {
     /// 盤の大きさ。
     public let size: BoardSize
     /// 次に打つ側。
-    public let toMove: Stone
+    public private(set) var toMove: Stone
     /// 盤上の石の配置の Zobrist ハッシュ（手番を含まない）。局面スーパーコウの判定に使う。
-    public let boardHash: UInt64
-    let cells: [BoardCell]
+    public private(set) var boardHash: UInt64
+    private(set) var cells: [BoardCell]
 
     private init(size: BoardSize, cells: [BoardCell], toMove: Stone, boardHash: UInt64) {
         self.size = size
@@ -46,24 +47,50 @@ public struct Position: Sendable, Hashable {
         return cells[size.index(of: point)].pointState
     }
 
+    /// 空点（`BoardSize.points` の順）。プレイアウトが毎手の候補を作るのに使う。
+    public func emptyPoints() -> [Point] {
+        var points: [Point] = []
+        points.reserveCapacity(size.pointCount)
+        for y in 0..<size.height {
+            for x in 0..<size.width where cells[(y + 1) * size.stride + x + 1] == .empty {
+                if let point = Point.at(x: x, y: y) {
+                    points.append(point)
+                }
+            }
+        }
+        return points
+    }
+
     /// 盤上のその色の石の数。
     public func count(of stone: Stone) -> Int {
         let target = BoardCell.of(stone)
         return cells.reduce(0) { $1 == target ? $0 + 1 : $0 }
     }
 
-    /// 手を打つ。パスは手番だけを渡す。石を置く手は、盤の外・占有・自殺手なら打てない。相手の連の呼吸点を 0 にしたら取る。
+    /// 手を打った新しい局面を返す（元の局面は変えない）。打つ経路は `apply(_:)` の 1 つ。
     public func play(_ move: Move) -> PlayOutcome {
+        var next = self
+        switch next.apply(move) {
+        case .placed(let captured):
+            return .played(next, captured: captured)
+        case .rejected(let reason):
+            return .rejected(reason)
+        }
+    }
+
+    /// 手をこの局面に打つ（唯一の経路）。パスは手番だけを渡す。石を置く手は、盤の外・占有・自殺手なら打たずに理由を返す。
+    /// 相手の連の呼吸点を 0 にしたら取る。拒んだときは局面を変えない。
+    mutating func apply(_ move: Move) -> Placement {
         switch move {
         case .pass:
-            return .played(
-                Position(size: size, cells: cells, toMove: toMove.opponent, boardHash: boardHash), captured: 0)
+            toMove = toMove.opponent
+            return .placed(captured: 0)
         case .place(let point):
             return place(at: point)
         }
     }
 
-    private func place(at point: Point) -> PlayOutcome {
+    private mutating func place(at point: Point) -> Placement {
         guard size.contains(point) else {
             return .rejected(.outsideBoard)
         }
@@ -71,20 +98,25 @@ public struct Position: Sendable, Hashable {
         guard cells[index] == .empty else {
             return .rejected(.occupied)
         }
-        var next = cells
-        var hash = boardHash ^ Zobrist.key(at: index, for: toMove)
-        next[index] = BoardCell.of(toMove)
+        let key = Zobrist.key(at: index, for: toMove)
+        cells[index] = BoardCell.of(toMove)
+        boardHash ^= key
         let enemy = BoardCell.of(toMove.opponent)
         var captured = 0
-        for neighbor in size.neighbors(of: index) where next[neighbor] == enemy {
-            if !Position.chainHasLiberty(next, from: neighbor, size: size) {
-                captured += Position.removeChain(&next, from: neighbor, size: size, hash: &hash)
+        for k in 0..<4 {
+            let neighbor = size.neighbor(of: index, k)
+            if cells[neighbor] == enemy && !Position.chainHasLiberty(cells, from: neighbor, size: size) {
+                captured += Position.removeChain(&cells, from: neighbor, size: size, hash: &boardHash)
             }
         }
-        if captured == 0 && !Position.chainHasLiberty(next, from: index, size: size) {
+        if captured == 0 && !Position.chainHasLiberty(cells, from: index, size: size) {
+            // 何も取っていないので、置いた石を戻せば元の局面になる
+            cells[index] = .empty
+            boardHash ^= key
             return .rejected(.suicide)
         }
-        return .played(Position(size: size, cells: next, toMove: toMove.opponent, boardHash: hash), captured: captured)
+        toMove = toMove.opponent
+        return .placed(captured: captured)
     }
 
     private static func blankCells(size: BoardSize) -> [BoardCell] {
