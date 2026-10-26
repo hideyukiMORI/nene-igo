@@ -10,7 +10,8 @@ struct TerminalTests {
 
     static func grid(_ text: String) -> Grid {
         var grid = Grid.filled(
-            ScreenSize(columns: 4, rows: 2), with: Cell(character: " ", foreground: ink, background: ground))
+            ScreenSize(columns: 4, rows: 2),
+            with: Cell(character: " ", foreground: ink, background: ground, style: .plain))
         grid.write(text, column: 0, row: 0, colors: CellColors(foreground: ink, background: ground))
         return grid
     }
@@ -26,7 +27,7 @@ struct TerminalTests {
         let bytes = String(
             decoding: FrameEncoder.encode(Self.grid("ab"), previous: nil, colors: .trueColor), as: UTF8.self)
         #expect(bytes.hasPrefix("\u{1B}[0m\u{1B}[2J"))
-        #expect(bytes.contains("38;2;200;200;200;48;2;0;0;0m"))
+        #expect(bytes.contains("24;38;2;200;200;200;48;2;0;0;0m"))
         #expect(bytes.contains("ab"))
     }
 
@@ -38,6 +39,15 @@ struct TerminalTests {
         #expect(bytes.hasPrefix("\u{1B}[1;2H"))
         #expect(bytes.contains("c"))
         #expect(!bytes.contains("a"))
+    }
+
+    /// 下線つきのセルは SGR 4、続く飾りなしのセルは SGR 24 で下線を止める（ADR 0009）。
+    @Test func underlineIsTurnedOnAndOffExplicitly() {
+        var grid = Self.grid("ab")
+        grid.paintStone(column: 0, row: 1, width: 2, colors: CellColors(foreground: Self.ground, background: Self.ink))
+        let bytes = String(decoding: FrameEncoder.encode(grid, previous: nil, colors: .trueColor), as: UTF8.self)
+        #expect(bytes.contains("\u{1B}[4;38;2;0;0;0;48;2;200;200;200m  "))
+        #expect(bytes.contains("\u{1B}[24;"))
     }
 
     @Test func palette256PicksTheNearestColor() {

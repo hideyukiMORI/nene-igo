@@ -22,14 +22,25 @@ public struct Grid: Sendable, Hashable {
         }
         for (offset, character) in text.enumerated() where (0..<size.columns).contains(column + offset) {
             cells[row * size.columns + column + offset] = Cell(
-                character: character, foreground: colors.foreground, background: colors.background)
+                character: character, foreground: colors.foreground, background: colors.background, style: .plain)
         }
     }
 
-    /// 空白で塗る（石と盤の地）。
+    /// 空白で塗る（盤の地）。
     mutating func paint(column: Int, row: Int, width: Int, color: Rgb) {
         write(
             String(repeating: " ", count: width), column: column, row: row,
             colors: CellColors(foreground: color, background: color))
+    }
+
+    /// 石を塗る: 空白のセルの背景を石の色にし、下線を `gap`（碁盤の地）の色で引く（ADR 0009）。
+    mutating func paintStone(column: Int, row: Int, width: Int, colors: CellColors) {
+        guard (0..<size.rows).contains(row) else {
+            return
+        }
+        for offset in 0..<width where (0..<size.columns).contains(column + offset) {
+            cells[row * size.columns + column + offset] = Cell(
+                character: " ", foreground: colors.foreground, background: colors.background, style: .underlined)
+        }
     }
 }

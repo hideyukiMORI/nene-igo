@@ -70,9 +70,11 @@ struct BoardFrame: Sendable, Hashable {
             let mark = Self.isStar(point, size) ? "*" : "+"
             grid.write(mark + (edge ? " " : "-"), column: left(of: point.x), row: screen, colors: lines)
         case .black:
-            grid.paint(column: left(of: point.x), row: screen, width: 2, color: theme.color(of: .black))
+            let colors = CellColors(foreground: theme.board, background: theme.color(of: .black))
+            grid.paintStone(column: left(of: point.x), row: screen, width: 2, colors: colors)
         case .white:
-            grid.paint(column: left(of: point.x), row: screen, width: 2, color: theme.color(of: .white))
+            let colors = CellColors(foreground: theme.board, background: theme.color(of: .white))
+            grid.paintStone(column: left(of: point.x), row: screen, width: 2, colors: colors)
         }
     }
 

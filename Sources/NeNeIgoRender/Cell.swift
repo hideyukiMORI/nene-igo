@@ -2,9 +2,10 @@
 ///
 /// 移植元: NeNe Reversi `Sources/NeNeReversiRender/`（コミット e4a6f52）の同名の型（Cell・CellColors・ColorMode・Countdown・Grid・Rgb・ScreenSize・HudLine）。
 ///
-/// 石のセルは空白で、背景色だけが石の色になる（FR-07）。
+/// 石のセルは空白で、背景色だけが石の色になる（FR-07）。石のセルは下線を碁盤の地の色で引く（ADR 0009）。
 public struct Cell: Sendable, Hashable {
     public let character: Character
     public let foreground: Rgb
     public let background: Rgb
+    public let style: CellStyle
 }

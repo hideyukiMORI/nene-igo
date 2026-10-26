@@ -51,6 +51,19 @@ struct TableRendererTests {
         }
     }
 
+    /// 石のセルだけが下線つきで、下線は碁盤の地の色（縦に並んだ石を 1 つずつ離す・ADR 0009）。
+    @Test func onlyStoneCellsAreUnderlinedInTheBoardColor() {
+        let (series, grid) = Self.render(steps: 60)
+        let underlined = Self.cells(grid).filter { $0.style == .underlined }
+        let stones = series.game.position.count(of: .black) + series.game.position.count(of: .white)
+        #expect(underlined.count == stones * 2)
+        #expect(underlined.allSatisfy { $0.foreground == Self.theme.board && $0.character == " " })
+        #expect(
+            underlined.allSatisfy {
+                $0.background == Self.theme.color(of: .black) || $0.background == Self.theme.color(of: .white)
+            })
+    }
+
     /// 横に並んだ石のあいだには線の桁が 1 つ残る（石どうしが横につながって見えない）。
     @Test func horizontallyAdjacentStonesKeepALineBetweenThem() {
         let (series, grid) = Self.render(steps: 120)
