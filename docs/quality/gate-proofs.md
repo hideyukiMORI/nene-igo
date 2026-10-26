@@ -11,10 +11,10 @@
 🔴 **NeNe Reversi から移植した検査も、証明はこのリポジトリで取り直す**（ADR 0003）。Reversi・Gambit の証明の結果は 1 つも写していない。
 
 証明は `eng/prove-gates.py` が行う。作業木（git が追跡するか追跡し得るファイルと `.git`）を一時ディレクトリへ複製し、
-依存グラフの正本どおりの 5 target と Core のテスト target と規則に沿った最小のソース（「足場」）を置いてから違反を **1 か所だけ** 仕込み、
+本物のソース・テスト・設定に違反を **1 か所だけ** 仕込み（Issue #5 で全 target がそろったので、それまでの「足場」をやめた）、
 `make check`（いくつかはより狭いタスク）を回す。
 **意図した規則 ID（または道具の規則名）が出力に現れて失敗したとき**だけ pass とする。別の理由で落ちたものは証明にならない。
-作業木そのものには触れない。足場は証明のための一時物で、リポジトリには入れていない。
+作業木そのものには触れない。
 `prove-gates.py` は、強制マトリクスで active の規則に証明が 1 つも無いと exit 1 で終わる。
 
 環境: WSL2 Ubuntu（glibc 2.35）/ Swift 6.4.1（swiftly）/ swift-format 6.4.1 / SwiftLint 0.65.1（swiftlint-static）/ Python 3.10.12
@@ -85,10 +85,10 @@ CI: GitHub Actions `ubuntu-22.04` / Swift 6.4.1（固定の tarball・`eng/insta
 | GIT-004 | P43: ruleset が `main` に効いていることを読み戻し、必須 check の失敗した PR がマージできないことを見る（`main` への直接 push と force push の試行は、公開リポジトリの `main` を壊しうるので行っていない） | `gh api repos/hideyukiMORI/nene-igo/rules/branches/main`・`gh pr view 2`（2026-10-26） | P43: `main` に効く規則は ruleset 25844451 の `deletion`・`non_fast_forward`・`pull_request`（squash のみ）・`required_status_checks`（`check`）の 4 つ。PR #2 の head fe8bf67 は必須 check `check` が FAILURE で `mergeStateStatus` が `BLOCKED` |
 <!-- proofs:active:end -->
 
-**復帰の確認**: 対照 P00（足場だけ・違反なし）と P00b（足場を置かない作業木そのまま）が、どちらも `make check` で exit 0（`make check: 緑`）。
-各証明は対照と同じ足場に違反を 1 つ足しただけなので、「仕込みを戻すと緑」は P00 が示す。
+**復帰の確認**: 対照 P00（作業木そのまま・違反なし）が `make check` で exit 0（`make check: 緑`）。
+各証明は作業木の複製に違反を 1 つ足しただけなので、「仕込みを戻すと緑」は P00 が示す。
 
-**除外側の確認**: P00 の足場では、合成ルート `nene-igo` が `ContinuousClock.now`・`SystemRandomNumberGenerator`・`CommandLine.arguments`・`print` を使い、
+**除外側の確認**: P00 の作業木では、合成ルート `nene-igo` が `ContinuousClock`・`SystemRandomNumberGenerator`・`CommandLine.arguments`・`getenv`・`exit` を使い、
 `NeNeIgoTerminal`（`unsafe=allowed`）が `withUnsafeMutablePointer` と `ioctl` を使っている。それでも `make check` は緑で、
 同じ書き方を Core・Engine・テストに置くと P04・P05・P14・P40 で落ちる。
 
@@ -190,7 +190,8 @@ P37  tools: swift は 6.4.0 が要るが、起動できない: The swift version
 | Reversi の証明 P62（登録商標のゲーム名）は、囲碁に要らない規則（Reversi の規則番号で 23 番）の証明 | 規則と一緒に落とした（ADR 0003）。番号は詰めず、残りの証明の番号は Reversi と同じ |
 | Reversi から写した GitHub 側の証明（P43・P46）は Reversi の ruleset と run の記録だった | このリポジトリの ruleset 25844451・PR #2・run 40250600895 で取り直して書き換えた |
 | 取り直しで、Reversi にあった新しい穴は見つからなかった | 59 件すべて、Reversi と同じ規則 ID で落ちた。**同じ結果になったことは、写してよい根拠ではない**（測った結果である） |
-| Issue #3 で `make check` に `test` 段（release 構成の `swift test`）を足した | 足場の manifest に Core のテスト target を足し、P47（ソースの無いテスト target）は Engine のテスト target で仕込む形にした。テストが実際に回って落ちることを P48（Tromp の値を 1 つ変える）で見た |
+| Issue #3 で `make check` に `test` 段（release 構成の `swift test`）を足した | テストが実際に回って落ちることを P48（Tromp の値を 1 つ変える）で見た |
+| Issue #5 で全 target がそろい、`smoke` 段を足した | 証明を足場から本物のソースに違反を仕込む形に変え（Reversi の e4a6f52 と同じ）、対照は P00 の 1 つにした。P47 はどこにも無い `NeNeIgoProbeTests` で仕込む。端末の復元を壊すと smoke が落ちることを P49 で見た |
 
 ---
 

@@ -1,6 +1,6 @@
 # ADR 0004 — target は Core・Engine・Render・Terminal・合成ルートの 5 つに分け、兄弟と同じ向きで依存させる
 
-- 状態: 受理
+- 状態: 受理（Terminal の標準モジュールに `Synchronization` を足すことは ADR 0008 で置換）
 - 日付: 2026-10-26
 - Issue: #1
 - 影響する規則: ARC-002 / ARC-003 / ARC-006 / ARC-007 / ARC-011 / CNF-010 / CNF-011

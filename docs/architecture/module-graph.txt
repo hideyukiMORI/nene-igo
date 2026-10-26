@@ -7,7 +7,7 @@
 NeNeIgoCore          kind=library     deps=
 NeNeIgoEngine        kind=library     deps=NeNeIgoCore
 NeNeIgoRender        kind=library     deps=NeNeIgoCore,NeNeIgoEngine
-NeNeIgoTerminal      kind=library     deps=NeNeIgoRender                                       std=Glibc unsafe=allowed
+NeNeIgoTerminal      kind=library     deps=NeNeIgoRender                                       std=Glibc,Synchronization unsafe=allowed
 nene-igo             kind=executable  deps=NeNeIgoCore,NeNeIgoEngine,NeNeIgoRender,NeNeIgoTerminal std=Glibc role=composition-root
 
 NeNeIgoCoreTests     kind=test        deps=NeNeIgoCore                                         std=Testing
